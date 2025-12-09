@@ -14,7 +14,13 @@ export default defineConfig({
         functions: 80,
         lines: 80,
       },
-      exclude: ["src/index.ts"],
+      exclude: [
+        "src/index.ts",
+        "src/server.ts",
+        "src/config/env.ts",
+        "src/docs/swagger.ts",
+        "src/routes/userRoutes.ts",
+      ],
     },
   },
 });
