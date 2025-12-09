@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "rootDir": "src",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"],
     "strict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
+    "declaration": true,
     "sourceMap": true,
-    "types": ["node", "vitest"]
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "tests"],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src", "test", "vitest.config.ts", "tsup.config.ts"]
 }
