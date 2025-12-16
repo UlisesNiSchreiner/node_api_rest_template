@@ -19,13 +19,21 @@ function updatePackageJson(newName) {
 }
 
 function updateReadme(newName) {
-  const readmePath = path.resolve(__dirname, "..", "README.md");
+  const readmePath = path.resolve(process.cwd(), "README.md");
 
-  if (!fs.existsSync(readmePath)) return;
+  if (!fs.existsSync(readmePath)) {
+    console.warn("⚠ README.md not found, skipping");
+    return;
+  }
 
   let content = fs.readFileSync(readmePath, "utf8");
-  content = content.replace(/uns-typescript-lib-template/g, newName);
-  content = content.replace(/typescript-lib-template/g, newName);
+
+  const githubUser = process.env.GITHUB_USER || "<GITHUB_USER>";
+  const repoName = newName;
+
+  content = content.replace(/^# .*/m, `# ${newName}`);
+  content = content.replace(/<REPO_NAME>/g, repoName);
+  content = content.replace(/<GITHUB_USER>/g, githubUser);
 
   fs.writeFileSync(readmePath, content);
   console.log("✔ README.md updated");
